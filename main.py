@@ -9,9 +9,17 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.cursor()
 
-mycursor.execute("CREATE DATABASE IF NOT EXISTS verifica")
-mycursor.execute("USE verifica")
 
+risp = int(input("Inserisci l'id dell'album che vuoi eliminare:  ")) 
+mycursor.execute("USE verifica")
+elimina = "DELETE FROM musica WHERE id = %s"
+mycursor.execute(elimina, (risp,))
+mydb.commit()
+
+
+
+
+'''
 rispUtente1 = int(input('Quante album vorresti inserire: '))
 for _ in range(rispUtente1):
   Artista = input("Nome dell'artista della canzone: ")
@@ -24,3 +32,5 @@ for _ in range(rispUtente1):
   mycursor.execute(sql, val)
   mydb.commit()
   print(mycursor.rowcount, "inserito")   
+  '''
+
